@@ -1,0 +1,37 @@
+import pandas as pd 
+import matplotlib.pyplot as plt
+
+ # Create Sample Wi-Fi Usage Data
+
+data = {
+    
+          'Date': pd.date_range(start='2025-01-01', periods=10, freq='D'), 
+           'Data_Used_GB': [12, 18, 25, 30, 22, 40, 35, 28, 45, 38]
+         }
+
+df = pd.DataFrame(data) 
+print("\n Wi-Fi Usage Data:\n")
+print(df)
+
+print("\nStatistical Summary:\n")
+print(df['Data_Used_GB'].describe())
+
+  #Peak Usage Detection
+
+peak_usage = df.loc[df['Data_Used_GB'].idxmax()]
+print("\nPeak Wi-Fi Usage Day:\n") 
+print(peak_usage)
+
+  #Line Plot 
+plt.figure()
+plt.plot(df['Date'], df['Data_Used_GB'], marker='o')
+plt.xlabel('Date')
+plt.ylabel('Data Used (GB)')
+plt.title('College Wi-Fi Usage Analysis')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+
+print("\nConclusion:")
+print("This project analyzes college Wi-Fi usage, identifies peak usage days, and visualizes trends using Pandas and Matplotlib.")
